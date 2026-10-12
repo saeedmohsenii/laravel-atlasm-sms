@@ -399,15 +399,14 @@ class SmsService
 
             // در GetCredit، خروجی عددی مثبت یا صفر می‌تواند اعتبار باشد.
             if ($credit) {
-                if (
-                    is_numeric($data) &&
-                    (float) $data >= 0
-                ) {
+                $amount = $this->parseCredit($data);
+
+                if ($amount !== null) {
                     return [
                         'success' => true,
                         'method' => $method,
                         'message' => 'اعتبار پنل دریافت شد.',
-                        'credit' => (float) $data,
+                        'credit' => $amount,
                         'data' => $data,
                     ];
                 }
@@ -499,6 +498,38 @@ class SmsService
                 'data' => null,
             ];
         }
+    }
+
+    /**
+     * تبدیل مقدار اعتبار به عدد.
+     *
+     * سرویس ممکن است اعتبار را با جداکننده‌ی هزارگان (مثل 971,333)
+     * یا با ارقام فارسی/عربی برگرداند.
+     */
+    private function parseCredit(mixed $value): ?float
+    {
+        if (is_int($value) || is_float($value)) {
+            return $value >= 0 ? (float) $value : null;
+        }
+
+        if (! is_string($value)) {
+            return null;
+        }
+
+        $value = strtr(trim($value), [
+            '۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4',
+            '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
+            '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4',
+            '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9',
+            '٫' => '.',
+        ]);
+
+        // جداکننده‌های هزارگان (لاتین، فارسی) و فاصله
+        $value = str_replace([',', '٬', '،', ' '], '', $value);
+
+        return preg_match('/^\d+(\.\d+)?$/', $value) === 1
+            ? (float) $value
+            : null;
     }
 
     /**

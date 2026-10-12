@@ -163,6 +163,26 @@ class SmsServiceTest extends TestCase
         $this->assertSame(1500.5, $result['credit']);
     }
 
+    public function test_get_credit_parses_thousands_separator(): void
+    {
+        [$sms] = $this->service('971,333');
+
+        $result = $sms->getCredit();
+
+        $this->assertTrue($result['success']);
+        $this->assertSame(971333.0, $result['credit']);
+    }
+
+    public function test_get_credit_parses_persian_digits_and_separators(): void
+    {
+        [$sms] = $this->service('۱,۲۳۴,۵۶۷');
+
+        $result = $sms->getCredit();
+
+        $this->assertTrue($result['success']);
+        $this->assertSame(1234567.0, $result['credit']);
+    }
+
     public function test_get_credit_maps_wrapped_error_code(): void
     {
         [$sms] = $this->service((object) ['Return' => '0']);
