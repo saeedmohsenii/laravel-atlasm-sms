@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | آدرس WSDL سرویس SOAP (مثال: https://panel.atlasm.ir/path/to/service?wsdl)
+    | آدرس WSDL سرویس SOAP (مثال: ATLASM_SMS_WSDL=https://panel.atlasm.ir/webservice/send.php?wsdl)
     |--------------------------------------------------------------------------
     */
     'wsdl' => env('ATLASM_SMS_WSDL'),
