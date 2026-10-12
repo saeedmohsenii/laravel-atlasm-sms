@@ -1,51 +1,61 @@
 {
-    "name": "your-vendor/laravel-atlasm-sms",
-    "description": "Laravel package for sending SMS and checking credit / delivery status through the Atlasm SOAP SMS panel.",
-    "keywords": ["laravel", "sms", "soap", "atlasm", "atlasm panel", "iran", "persian", "پیامک", "اطلس ام"],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Your Name",
-            "email": "you@example.com"
-        }
-    ],
-    "require": {
-        "php": "^8.1",
-        "ext-soap": "*",
-        "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
-        "psr/log": "^1.0|^2.0|^3.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
-        "phpunit/phpunit": "^10.0|^11.0|^12.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Atlasm\\Sms\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Atlasm\\Sms\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Atlasm\\Sms\\AtlasmSmsServiceProvider"
-            ],
-            "aliases": {
-                "AtlasmSms": "Atlasm\\Sms\\Facades\\AtlasmSms"
-            }
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+  "name": "saeedmohsenii/laravel-atlasm-sms",
+  "description": "Laravel package for sending SMS and checking credit / delivery status through the Atlasm SOAP SMS panel.",
+  "keywords": [
+    "laravel",
+    "sms",
+    "soap",
+    "atlasm",
+    "atlasm panel",
+    "iran",
+    "persian",
+    "پیامک",
+    "اطلس ام"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Saeed Mohseni",
+      "email": "atlasm.6505@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-soap": "*",
+    "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+    "psr/log": "^1.0|^2.0|^3.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0|^10.0|^11.0",
+    "phpunit/phpunit": "^10.0|^11.0|^12.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Atlasm\\Sms\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Atlasm\\Sms\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Atlasm\\Sms\\AtlasmSmsServiceProvider"
+      ],
+      "aliases": {
+        "AtlasmSms": "Atlasm\\Sms\\Facades\\AtlasmSms"
+      }
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
