@@ -36,8 +36,8 @@ php artisan vendor:publish --tag=atlasm-sms-config
 مقادیر زیر را در فایل `.env` قرار دهید:
 
 ```env
-ATLASM_SMS_WSDL=https://panel.atlasm.ir/path/to/service?wsdl
-ATLASM_SMS_USERNAME=your-username
+ATLASM_SMS_WSDL=https://panel.atlasm.ir/webservice/send.php?wsdl
+TLASM_SMS_USERNAME=your-username
 ATLASM_SMS_PASSWORD=your-password
 ATLASM_SMS_SENDER=3000xxxx
 
